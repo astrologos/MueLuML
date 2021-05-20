@@ -1,0 +1,265 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
+
+FIND_PACKAGE(deal.II 9.1.1 REQUIRED
+  HINTS ${DEAL_II_DIR} ../ ../../ $ENV{DEAL_II_DIR}
+  )
+DEAL_II_INITIALIZE_CACHED_VARIABLES()
+
+PROJECT(MueLuML)
+
+
+##############################################################################
+#
+# CMake variable for use by Trilinos clients.
+#
+# Do not edit: This file was generated automatically by CMake.
+#
+##############################################################################
+
+#
+# Ensure CMAKE_CURRENT_LIST_DIR is usable.
+#
+
+# Include guard
+SET(Trilinos_CONFIG_INCLUDED TRUE)
+
+# Make sure CMAKE_CURRENT_LIST_DIR is usable
+IF (NOT DEFINED CMAKE_CURRENT_LIST_DIR)
+  GET_FILENAME_COMPONENT(_THIS_SCRIPT_PATH ${CMAKE_CURRENT_LIST_FILE} PATH)
+  SET(CMAKE_CURRENT_LIST_DIR ${_THIS_SCRIPT_PATH})
+ENDIF()
+
+
+## ---------------------------------------------------------------------------
+## Compilers used by Trilinos build
+## ---------------------------------------------------------------------------
+
+SET(Trilinos_CXX_COMPILER "/opt/apps/gcc6_1/openmpi/3.0.0/bin/mpicxx")
+
+SET(Trilinos_C_COMPILER "/opt/apps/gcc6_1/openmpi/3.0.0/bin/mpicc")
+
+SET(Trilinos_Fortran_COMPILER "/opt/apps/gcc6_1/openmpi/3.0.0/bin/mpif90")
+
+## ---------------------------------------------------------------------------
+## Compiler flags used by Trilinos build
+## ---------------------------------------------------------------------------
+
+SET(Trilinos_CXX_COMPILER_FLAGS " -std=c++11 -O3 -DNDEBUG")
+
+SET(Trilinos_C_COMPILER_FLAGS " -O3 -DNDEBUG")
+
+SET(Trilinos_Fortran_COMPILER_FLAGS " -O3")
+
+## Extra link flags (e.g., specification of fortran libraries)
+SET(Trilinos_EXTRA_LD_FLAGS "")
+
+## This is the command-line entry used for setting rpaths. In a build
+## with static libraries it will be empty.
+SET(Trilinos_SHARED_LIB_RPATH_COMMAND "-Wl,-rpath, $ENV{TRILINOS_LIB}")
+SET(Trilinos_BUILD_SHARED_LIBS "ON")
+
+SET(Trilinos_LINKER /usr/bin/ld)
+SET(Trilinos_AR /usr/bin/ar)
+
+
+## ---------------------------------------------------------------------------
+## Set library specifications and paths
+## ---------------------------------------------------------------------------
+
+## The project version number
+SET(Trilinos_VERSION "12.10.1")
+
+## The project include file directories.
+#SET(Trilinos_INCLUDE_DIRS "$ENV{TRILINOS_INC}")
+
+## The project library directories.
+#SET(Trilinos_LIBRARY_DIRS "$ENV{TRILINOS_LIB}")
+
+## The project libraries.
+#SET(Trilinos_LIBRARIES "piro;stokhos_muelu;stokhos_ifpack2;stokhos_tpetra;stokhos_sacado;stokhos;moochothyra;moocho;rythmos;muelu-adapters;muelu-interface;muelu;locathyra;locaepetra;localapack;loca;noxepetra;noxlapack;nox;phalanx;intrepid;teko;stratimikos;stratimikosbelos;stratimikosaztecoo;stratimikosamesos;stratimikosml;stratimikosifpack;ifpack2-adapters;ifpack2;anasazitpetra;ModeLaplace;anasaziepetra;anasazi;belostpetra;belosepetra;belos;ml;ifpack;pamgen_extras;pamgen;amesos;galeri-xpetra;galeri-epetra;aztecoo;isorropia;optipack;xpetra-sup;xpetra;thyratpetra;thyraepetraext;thyraepetra;thyracore;thyratpetra;thyraepetraext;thyraepetra;thyracore;epetraext;tpetraext;tpetrainout;tpetra;tpetrakernels;tpetraclassiclinalg;tpetraclassicnodeapi;tpetraclassic;tpetraext;tpetrainout;tpetra;tpetrakernels;tpetraclassiclinalg;tpetraclassicnodeapi;tpetraclassic;triutils;globipack;shards;zoltan;epetra;sacado;rtop;teuchoskokkoscomm;teuchoskokkoscompat;teuchosremainder;teuchosnumerics;teuchoscomm;teuchosparameterlist;teuchoscore;teuchoskokkoscomm;teuchoskokkoscompat;teuchosremainder;teuchosnumerics;teuchoscomm;teuchosparameterlist;teuchoscore;kokkosalgorithms;kokkoscontainers;kokkoscore;kokkosalgorithms;kokkoscontainers;kokkoscore;tpi;gtest")
+
+## The project tpl include paths
+#SET(Trilinos_TPL_INCLUDE_DIRS "/opt/apps/gcc6_1/boost/1.58.0/include")
+
+## The project tpl library paths
+#SET(Trilinos_TPL_LIBRARY_DIRS "")
+
+## The project tpl libraries
+#SET(Trilinos_TPL_LIBRARIES "/usr/lib64/libdl.so;/opt/apps/gcc6_1/atlas/3.11.36/lib/libtatlas.so;/opt/apps/gcc6_1/atlas/3.11.36/lib/libtatlas.so")
+
+# For best practices in handling of components, see
+# <http://www.cmake.org/cmake/help/v3.2/manual/cmake-developer.7.html#find-modules>.
+#
+# If components were requested, include only those. If not, include all of
+# Trilinos.
+IF (Trilinos_FIND_COMPONENTS)
+  SET(COMPONENTS_LIST ${Trilinos_FIND_COMPONENTS})
+ELSE()
+  SET(COMPONENTS_LIST Piro;Stokhos;MOOCHO;Rythmos;MueLu;NOX;Phalanx;Intrepid;Teko;Stratimikos;Ifpack2;Anasazi;Belos;ML;Ifpack;Pamgen;Amesos;Galeri;AztecOO;Isorropia;OptiPack;Xpetra;Thyra;ThyraTpetraAdapters;ThyraEpetraExtAdapters;ThyraEpetraAdapters;ThyraCore;EpetraExt;Tpetra;TpetraCore;TpetraKernels;TpetraClassic;Triutils;GlobiPack;Shards;Zoltan;Epetra;Sacado;RTOp;Teuchos;TeuchosKokkosComm;TeuchosKokkosCompat;TeuchosRemainder;TeuchosNumerics;TeuchosComm;TeuchosParameterList;TeuchosCore;Kokkos;KokkosAlgorithms;KokkosContainers;KokkosCore;ThreadPool;Gtest)
+ENDIF()
+
+# Initialize Trilinos_FOUND with true, and set it to FALSE if any of
+# the required components wasn't found.
+SET(Trilinos_FOUND TRUE)
+FOREACH(comp ${COMPONENTS_LIST})
+   SET(
+     INCLUDE_FILE
+     $ENV{TRILINOS_LIB}/cmake/${comp}/${comp}Config.cmake
+     )
+   IF (EXISTS ${INCLUDE_FILE})
+       # Set Trilinos_<component>_FOUND.
+       SET(Trilinos_${comp}_FOUND TRUE)
+       # Include the package file.
+       INCLUDE(${INCLUDE_FILE})
+       # Add variables to lists.
+       LIST(APPEND Trilinos_INCLUDE_DIRS ${${comp}_INCLUDE_DIRS})
+       LIST(APPEND Trilinos_LIBRARY_DIRS ${${comp}_LIBRARY_DIRS})
+       LIST(APPEND Trilinos_LIBRARIES ${${comp}_LIBRARIES})
+       LIST(APPEND Trilinos_TPL_INCLUDE_DIRS ${${comp}_TPL_INCLUDE_DIRS})
+       LIST(APPEND Trilinos_TPL_LIBRARY_DIRS ${${comp}_TPL_LIBRARY_DIRS})
+       LIST(APPEND Trilinos_TPL_LIBRARIES ${${comp}_TPL_LIBRARIES})
+   ELSE()
+       # Component not found.
+       MESSAGE(WARNING "Component \"${comp}\" NOT found.")
+       # Set Trilinos_<component>_FOUND to FALSE.
+       SET(Trilinos_${comp}_FOUND FALSE)
+       # Set Trilinos_FOUND to FALSE if component is not optional.
+       IF(Trilinos_FIND_REQUIRED_${comp})
+           SET(Trilinos_FOUND FALSE)
+       ENDIF()
+   ENDIF()
+ENDFOREACH()
+
+# Resolve absolute paths and remove duplicate paths
+# for LIBRARY_DIRS and INCLUDE_DIRS
+# This reduces stress on regular expressions later
+SET(short_dirs)
+FOREACH(dir ${Trilinos_INCLUDE_DIRS})
+  GET_FILENAME_COMPONENT(dir_abs ${dir} ABSOLUTE)
+  LIST(APPEND short_dirs ${dir_abs})
+ENDFOREACH()
+LIST(REMOVE_DUPLICATES short_dirs)
+SET(Trilinos_INCLUDE_DIRS ${short_dirs})
+
+SET(short_dirs)
+FOREACH(dir ${Trilinos_LIBRARY_DIRS})
+  GET_FILENAME_COMPONENT(dir_abs ${dir} ABSOLUTE)
+  LIST(APPEND short_dirs ${dir_abs})
+ENDFOREACH()
+LIST(REMOVE_DUPLICATES short_dirs)
+SET(Trilinos_LIBRARY_DIRS ${short_dirs})
+
+## ---------------------------------------------------------------------------
+## MPI specific variables
+##   These variables are provided to make it easier to get the mpi libraries
+##   and includes on systems that do not use the mpi wrappers for compiling
+## ---------------------------------------------------------------------------
+
+SET(Trilinos_MPI_LIBRARIES "")
+SET(Trilinos_MPI_LIBRARY_DIRS "")
+SET(Trilinos_MPI_INCLUDE_DIRS "")
+SET(Trilinos_MPI_EXEC "/opt/apps/gcc6_1/openmpi/3.0.0/bin/mpiexec")
+SET(Trilinos_MPI_EXEC_MAX_NUMPROCS "4")
+SET(Trilinos_MPI_EXEC_NUMPROCS_FLAG "-np")
+
+## ---------------------------------------------------------------------------
+## Compiler vendor identifications
+## ---------------------------------------------------------------------------
+SET(Trilinos_SYSTEM_NAME "Linux")
+SET(Trilinos_CXX_COMPILER_ID "GNU")
+SET(Trilinos_C_COMPILER_ID "GNU")
+SET(Trilinos_Fortran_COMPILER_ID "GNU")
+SET(Trilinos_Fortran_IMPLICIT_LINK_LIBRARIES "mpi_usempif08;mpi_usempi_ignore_tkr;mpi_mpifh;mpi;gfortran;m;quadmath;m;pthread;c")
+
+## ---------------------------------------------------------------------------
+## Set useful general variables
+## ---------------------------------------------------------------------------
+
+## The packages enabled for this project
+SET(Trilinos_PACKAGE_LIST "Piro;Stokhos;MOOCHO;Rythmos;MueLu;NOX;Phalanx;Intrepid;Teko;Stratimikos;Ifpack2;Anasazi;Belos;ML;Ifpack;Pamgen;Amesos;Galeri;AztecOO;Isorropia;OptiPack;Xpetra;Thyra;ThyraTpetraAdapters
+;ThyraEpetraExtAdapters;ThyraEpetraAdapters;ThyraCore;EpetraExt;Tpetra;TpetraCore;TpetraKernels;TpetraClassic;Triutils;GlobiPack;Shards;Zoltan;Epetra;Sacado;RTOp;Teuchos;TeuchosKokkosComm;TeuchosKokkosCompat;TeuchosRemainder;TeuchosNumerics;TeuchosComm;TeuchosParameterList;TeuchosCore;Kokkos;KokkosAlgorithms;KokkosContainers;KokkosCore;ThreadPool;Gtest")
+
+## The TPLs enabled for this project
+SET(Trilinos_TPL_LIST "DLlib;Boost;LAPACK;BLAS;MPI;Pthread")
+
+
+# Load configurations from enabled packages
+include("$ENV{TRILINOS_LIB}/cmake/Piro/PiroConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Stokhos/StokhosConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/MOOCHO/MOOCHOConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Rythmos/RythmosConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/MueLu/MueLuConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/NOX/NOXConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Phalanx/PhalanxConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Intrepid/IntrepidConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Teko/TekoConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Stratimikos/StratimikosConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Ifpack2/Ifpack2Config.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Anasazi/AnasaziConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Belos/BelosConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/ML/MLConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Ifpack/IfpackConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Pamgen/PamgenConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Amesos/AmesosConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Galeri/GaleriConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/AztecOO/AztecOOConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Isorropia/IsorropiaConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/OptiPack/OptiPackConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Xpetra/XpetraConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Thyra/ThyraConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/ThyraTpetraAdapters/ThyraTpetraAdaptersConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/ThyraEpetraExtAdapters/ThyraEpetraExtAdaptersConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/ThyraEpetraAdapters/ThyraEpetraAdaptersConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/ThyraCore/ThyraCoreConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/EpetraExt/EpetraExtConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Tpetra/TpetraConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/TpetraCore/TpetraCoreConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/TpetraKernels/TpetraKernelsConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/TpetraClassic/TpetraClassicConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Triutils/TriutilsConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/GlobiPack/GlobiPackConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Shards/ShardsConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Zoltan/ZoltanConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Epetra/EpetraConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Sacado/SacadoConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/RTOp/RTOpConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Teuchos/TeuchosConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/TeuchosKokkosComm/TeuchosKokkosCommConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/TeuchosKokkosCompat/TeuchosKokkosCompatConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/TeuchosRemainder/TeuchosRemainderConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/TeuchosNumerics/TeuchosNumericsConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/TeuchosComm/TeuchosCommConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/TeuchosParameterList/TeuchosParameterListConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/TeuchosCore/TeuchosCoreConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Kokkos/KokkosConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/KokkosAlgorithms/KokkosAlgorithmsConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/KokkosContainers/KokkosContainersConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/KokkosCore/KokkosCoreConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/ThreadPool/ThreadPoolConfig.cmake")
+include("$ENV{TRILINOS_LIB}/cmake/Gtest/GtestConfig.cmake")
+#######################################################################################################
+
+
+# If you haven't already set the C++ compiler, use the same compiler
+# that was used to build Trilinos on your machine.  You do _not_ need
+# to edit this line.
+IF(NOT CMAKE_CXX_COMPILER)
+  MESSAGE("Setting CXX compiler.")
+  SET(CMAKE_CXX_COMPILER ${Trilinos_CXX_COMPILER})
+ENDIF()
+
+# If you haven't already set the C compiler, use the same compiler
+# that was used to build Trilinos on your machine.  You do _not_ 
+# need to edit this line.
+IF(NOT CMAKE_C_COMPILER)
+  MESSAGE("Setting C compiler.")
+  SET(CMAKE_C_COMPILER ${Trilinos_C_COMPILER})
+ENDIF()
+
+SET ( DEAL_II_CXX_FLAGS "-march=native -O2" )
+
+#ADD_EXECUTABLE(poisson3d poisson3d.cc)
+#DEAL_II_SETUP_TARGET(poisson3d)
+
+ADD_EXECUTABLE(mtx_optimal mtx_optimal.cc)
+DEAL_II_SETUP_TARGET(mtx_optimal RELEASE)

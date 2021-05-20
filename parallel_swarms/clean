@@ -1,0 +1,16 @@
+#!/bin/bash
+
+rm -rfv CMakeFiles
+rm -fv CMakeCache.txt
+rm -fv cmake_install.cmake
+rm -f Makefile
+rm -f particle_swarm
+rm -f single_optimal
+rm -f *.vtk
+rm -f *.csv
+rm -f *.png
+rm -f muelu_out_*
+clear
+
+
+echo "cleaned!"
