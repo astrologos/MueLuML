@@ -1,4 +1,9 @@
-# MueLuML
+# Machine Learning for Optimized Parameter Selection in Algebraic Multigrid Preconditioning
+
+Jack Alvarez, Ben Bilbro, Thomas Grady Sponsor: Dr. Chris Seifert, Sandia National Labs
+
+December 2019
+## Project: MueLuML
 ## Author: Jack Alvarez, Ben Bilbro, Thomas Grady
 ## Client: Sandia National Laboratories
 ## Sponsor: Dr. Mark Embree
